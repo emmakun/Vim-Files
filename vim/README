@@ -1,0 +1,8 @@
+---My Personal vimfiles for working with Ruby, Rails and HTML tags---
+
+Installation:
+
+git clone git://github.com/alvaroemmanuel/vimfiles .vimfiles
+ln -s ~/.vim ~/.vimfiles/vim
+ln -s ~/.vimfiles/gvimrc ~/.gvimrc
+
