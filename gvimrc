@@ -3,8 +3,8 @@
 """""""""""""""""""""""""""""""""
 let mapleader = "," " Change From Backslash to Comma in commands \a -> ,a
 set nocompatible                  " We're on vim, not vi
-filetype plugin indent on         " indent files, ftplugins
-set history=500                  " Remember more on history
+"filetype plugin indent on         " indent files, ftplugins
+"set history=500                  " Remember more on history
 runtime macros/matchit.vim        " Enable matchit
 set wildmode=list:longest         " bash like command line tab completion
 set wildignore=*.o,*.obj,*~,*.swp " ignore when tab completing:
@@ -21,18 +21,19 @@ nnoremap <C-y> 3<C-y>             " and down
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType html imap <C-Z> <C-X><C-O>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby,eruby imap . .<C-X><C-O>
-"autocmd FileType ruby,eruby imap :: ::<C-X><C-O>
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 set cot+=menuone
+
+"complete with Ctrl-Space
+inoremap <C-space> <C-x><C-o>
+
 "make <c-l> clear the highlight and redraw
 nnoremap <C-L> :nohls<CR><C-L>
 "in insert mode too
@@ -168,10 +169,10 @@ set list                          " show trailing whiteshace and tabs
 "set t_Co=256                      " tell the term has 256 colors
 
 if has('gui_running')
-"  set guioptions-=T              " Remove toolbar and menus in gvim
-"  set guioptions-=m
+  "set guioptions-=T              " Remove toolbar and menus in gvim
+  "set guioptions-=m
   set mousehide                  " Hide mouse after chars typed, only gvim
-  set transp=10
+"  set transp=10
 endif
 
 """""""""""""""""""""""""""""""""
@@ -251,7 +252,7 @@ map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 
-set lines=45
+set lines=50
 set columns=170
 
 "set go-=t
