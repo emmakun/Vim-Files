@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""
 let mapleader = "," " Change From Backslash to Comma in commands \a -> ,a
 set nocompatible                  " We're on vim, not vi
-"filetype plugin indent on         " indent files, ftplugins
+filetype plugin indent on         " indent files, ftplugins
 "set history=500                  " Remember more on history
 runtime macros/matchit.vim        " Enable matchit
 set wildmode=list:longest         " bash like command line tab completion
