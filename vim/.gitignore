@@ -1,8 +1,0 @@
-tags
-*~
-*.swp
-.DS_Store
-.VimballRecord
-.netrwhist
-rgb.txt
-tmp/*
