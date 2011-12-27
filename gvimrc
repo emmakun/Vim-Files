@@ -15,7 +15,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'scrooloose/nerdtree'
-Bundle 'msanders/snipmate'
+Bundle 'msanders/snipmate.vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 " Color Schemes
@@ -28,7 +28,7 @@ Bundle 'flazz/vim-colorschemes'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-Bundle 'dbext'
+Bundle 'dbext.vim'
 Bundle 'mru.vim'
 " Review
 "Bundle 'IndexedSearch'
@@ -194,7 +194,7 @@ set directory=~/.vim/swp//,.,/tmp
 """""""""""""""""""""""""""""""""
 syntax on                         " syntax highlighting, please
 set foldmethod=syntax             " me likes the syntax folding
-set foldnestmax=3                 " deepest fold level
+set foldnestmax=5                 " deepest fold level
 set foldcolumn=5                  " shows the foldcolumn which indicates foldable regions
 set nofoldenable                  " don't fold by default
 set ruler                         " always show the cursor position"
