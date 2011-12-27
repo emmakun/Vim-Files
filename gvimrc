@@ -1,11 +1,60 @@
 """""""""""""""""""""""""""""""""
+" Vundle
+"""""""""""""""""""""""""""""""""
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'scrooloose/nerdtree'
+Bundle 'msanders/snipmate'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-surround'
+" Color Schemes
+Bundle 'flazz/vim-colorschemes'
+" Review
+"Bundle 'tpope/vim-endwise'
+"Bundle 'scrooloose/syntastic'
+"Bundle 'othree/xml.vim'
+
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'dbext'
+Bundle 'mru.vim'
+" Review
+"Bundle 'IndexedSearch'
+"Bundle 'camelcasemotion'
+
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+filetype plugin indent on     " required! 
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed...
+
+"""""""""""""""""""""""""""""""""
 " Basics
 """""""""""""""""""""""""""""""""
 let mapleader = "," " Change From Backslash to Comma in commands \a -> ,a
-set nocompatible                  " We're on vim, not vi
-"filetype plugin indent on         " indent files, ftplugins
 "set history=500                  " Remember more on history
-runtime macros/matchit.vim        " Enable matchit
+"runtime macros/matchit.vim        " Enable matchit
 set wildmode=list:longest         " bash like command line tab completion
 set wildignore=*.o,*.obj,*~,*.swp " ignore when tab completing:
 set backspace=indent,eol,start    " Intuitive backspacing in insert mode
@@ -25,22 +74,22 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType sql set omnifunc=sqlcomplete#Complete
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 set cot+=menuone
 
-"complete with Ctrl-Space
-inoremap <C-space> <C-x><C-o>
+inoremap <C-space> <C-x><C-o>           "complete with Ctrl-Space
 
 "make <c-l> clear the highlight and redraw
 nnoremap <C-L> :nohls<CR><C-L>
 "in insert mode too
 inoremap <C-L> <C-O>:nohls<CR>
 
-map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
-map <F3> :source ~/vim_session <cr>     " And load session with F3
+"map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
+"map <F3> :source ~/vim_session <cr>     " And load session with F3
 
 " Tell vim to remember certain things when we exit
 "  '10 : marks will be remembered for up to 10 previously edited files
@@ -53,28 +102,28 @@ map <F3> :source ~/vim_session <cr>     " And load session with F3
 set tabstop=2 shiftwidth=2 expandtab " Set two space tabs:
 
 " Fix my seplling
-if exists("+spelllang")
-  set spelllang=es_mx
-endif
+"if exists("+spelllang")
+"  set spelllang=es_mx
+"endif
 
 set splitbelow                    " Split windows at bottom
 set ttimeoutlen=50                " Speed up <esc>
 
 "Rebuild tags with F5
-map <silent> <F5>:!ctags -R --exclude=.svn --exclude=.git --exclude=log *<CR>
+"map <silent> <F5>:!ctags -R --exclude=.svn --exclude=.git --exclude=log *<CR>
 
-set writeany                      " Allow writing readonly files
+"set writeany                      " Allow writing readonly files
 
 " set cursorcolumn when editing HAML
-autocmd BufEnter *.haml setlocal cursorcolumn
+"autocmd BufEnter *.haml setlocal cursorcolumn
 
 """""""""""""""""""""""""""""""""
 " Fat fingering stuff...
 """""""""""""""""""""""""""""""""
-cabbr Wq  wq                      " write and quit on Wq too
-cabbr Wqa wqa                     " useful when accidentally holding the shift key
-cabbr W w
-imap <F1> <Esc>                   " useful when accidentally hitting F1 when going back to normal mode
+"cabbr Wq  wq                      " write and quit on Wq too
+"cabbr Wqa wqa                     " useful when accidentally holding the shift key
+"cabbr W w
+"imap <F1> <Esc>                   " useful when accidentally hitting F1 when going back to normal mode
 
 
 """""""""""""""""""""""""""""""""
@@ -135,9 +184,10 @@ imap <F1> <Esc>                   " useful when accidentally hitting F1 when goi
 
 " Use a common directory for backups and swp files
 " Create it if it doesn't exist
-"silent execute '!mkdir -p ~/.vim_backups'
-set backupdir=./.vim_backups,.,/tmp
-set directory=.,./.vim_backups,/tmp
+silent execute '!mkdir -p ~/.vim/backup'
+silent execute '!mkdir -p ~/.vim/swp'
+set backupdir=~/.vim/backup//,.,/tmp
+set directory=~/.vim/swp//,.,/tmp
 
 """""""""""""""""""""""""""""""""
 " Looks
@@ -145,9 +195,10 @@ set directory=.,./.vim_backups,/tmp
 syntax on                         " syntax highlighting, please
 set foldmethod=syntax             " me likes the syntax folding
 set foldnestmax=3                 " deepest fold level
+set foldcolumn=5                  " shows the foldcolumn which indicates foldable regions
 set nofoldenable                  " don't fold by default
 set ruler                         " always show the cursor position"
-set number
+set number                        " show line numbers
 set showmatch                     " Show matching brackets.
 set mat=5                         " Bracket blinking. 
 set laststatus=2                  " Always show status line (not only for multiple windows)
@@ -194,7 +245,7 @@ map <silent> e <Plug>CamelCaseMotion_e
 """""""""""""""""""""""""""""""""
 " NERDTreeToggle
 """""""""""""""""""""""""""""""""""
-:map <leader>d :execute 'NERDTreeToggle ' .getcwd()<CR>
+:map <leader>p :execute 'NERDTreeToggle ' .getcwd()<CR>
 let NERDTreeShowLineNumbers=0
 
 
@@ -202,7 +253,7 @@ let NERDTreeShowLineNumbers=0
 " Requires fuzzyfinder and fuzzyfinder_textmate plugins
 let g:fuzzy_ignore = "log/*, .svn/*, .git/*"
 let g:fuzzy_matching_limit = 70
-map <leader>f :FuzzyFinderTextMate<CR>
+"map <leader>f :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 
 " Override mappings for rubytest.vim plugin
@@ -210,7 +261,7 @@ map <leader>b :FuzzyFinderBuffer<CR>
 "map <unique> <Leader>S <Plug>RubyFileRun
 
 " Add a todo wiki to Vimwiki
-let g:vimwiki_list = [{}, {'path': '~/todo/', 'path_html': '~/todo_html/'}]
+"let g:vimwiki_list = [{}, {'path': '~/todo/', 'path_html': '~/todo_html/'}]
 
 "CTags
 let g:ctags_statusline=1 " Display function name in status bar
@@ -260,3 +311,4 @@ set columns=170
 "if &background == 'dark'
 "  hi normal guibg=black
 "endif
+
